@@ -17,13 +17,13 @@ MonoBehaviour:
   description: 'Are you smarter than a medieval monk?
 
 
-    Cistercian Numbers regular module by PANOPTES version 1.0.
+    Cistercian Numbers regular module by PANOPTES version 1.011.
 
 
     Module ID: xelCistercianNumbers
 
 
     Github Repo: https://github.com/Mirage-Xel/xelCistercianNumbers'
-  version: 1.0
+  version: 1.011
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 4ec7bdbcea0d0ee49bcfccb2a5466969, type: 3}
