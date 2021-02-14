@@ -150,5 +150,31 @@ public class CistercianNumbers: MonoBehaviour {
         operation.text = operators[(int)puzzleType].ToString();
         StopAllCoroutines();
     }
-
+	string TwitchHelpMessage = " Use '!{0} submit 1234' to sumbit your answer. Only up to four digits are accepted.";
+	IEnumerator ProcessTwitchCommand(string command)
+	{
+		string[] commandArray  = command.ToLowerInvariant().Split(' ');
+		int number;
+		if (commandArray.Length != 2 || commandArray [0] != "submit" || !int.TryParse (commandArray[1], out number) || commandArray[1].Length > 4) {
+			yield return "sendtochaterror Invalid command";
+			yield break;
+		} else 
+		{
+			List<int> buttons = new List<int> ();
+			for (int i = 0; i < commandArray[1].Length; i++)
+			{
+				buttons.Add(number % 10);
+				number = number / 10;
+			}
+			buttons.Reverse ();
+			foreach (int i in buttons) {
+				yield return null;
+				numpad [i].OnInteract ();
+				yield return new WaitForSeconds (0.1f);
+			}
+			yield return null;
+			submit.OnInteract();
+			yield break;
+		}
+	}
 }
