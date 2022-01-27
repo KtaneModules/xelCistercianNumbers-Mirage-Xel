@@ -177,4 +177,41 @@ public class CistercianNumbers: MonoBehaviour {
 			yield break;
 		}
 	}
+
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        string curr = display.text;
+        string ans = result.ToString();
+        bool clrPress = false;
+        if (curr.Length > ans.Length)
+        {
+            clear.OnInteract();
+            yield return new WaitForSeconds(0.1f);
+            clrPress = true;
+        }
+        else
+        {
+            for (int i = 0; i < curr.Length; i++)
+            {
+                if (i == ans.Length)
+                    break;
+                if (curr[i] != ans[i])
+                {
+                    clear.OnInteract();
+                    yield return new WaitForSeconds(0.1f);
+                    clrPress = true;
+                    break;
+                }
+            }
+        }
+        int start = 0;
+        if (!clrPress)
+            start = curr.Length;
+        for (int j = start; j < ans.Length; j++)
+        {
+            numpad[int.Parse(ans[j].ToString())].OnInteract();
+            yield return new WaitForSeconds(0.1f);
+        }
+        submit.OnInteract();
+    }
 }
