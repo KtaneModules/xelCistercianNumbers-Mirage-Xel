@@ -115,8 +115,8 @@ public class CistercianNumbers: MonoBehaviour {
         sound.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.TypewriterKey, transform);
         if (!solved)
         {
-            Debug.LogFormat("[Cistercian Numbers #{0}] You submitted {1}.", moduleId, display.text);
-            if (int.Parse(display.text) == result)
+            Debug.LogFormat("[Cistercian Numbers #{0}] You submitted {1}.", moduleId, display.text == "" ? "nothing" : display.text);
+            if (display.text != "" && int.Parse(display.text) == result)
             {
                 Debug.LogFormat("[Cistercian Numbers #{0}] That was correct. Module solved.", moduleId);
                 sound.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
@@ -125,7 +125,7 @@ public class CistercianNumbers: MonoBehaviour {
             }
             else
             {
-                Debug.LogFormat("[Cistercian Numbers #{0}] That was incorrect. Strike!.", moduleId);
+                Debug.LogFormat("[Cistercian Numbers #{0}] That was incorrect. Strike!", moduleId);
                 module.HandleStrike();
                 display.text = "";
                 SetUpPuzzle();
