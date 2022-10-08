@@ -150,7 +150,7 @@ public class CistercianNumbers: MonoBehaviour {
         operation.text = operators[(int)puzzleType].ToString();
         StopAllCoroutines();
     }
-	string TwitchHelpMessage = " Use '!{0} submit 1234' to submit your answer. Only up to four digits are accepted.";
+	string TwitchHelpMessage = "Use '!{0} submit 1234' to submit your answer. Only up to four digits are accepted.";
 	IEnumerator ProcessTwitchCommand(string command)
 	{
 		string[] commandArray  = command.ToLowerInvariant().Split(' ');
